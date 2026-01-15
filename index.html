@@ -3,55 +3,446 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
+    <title>Coming Soon | The Future Awaits</title>
+    
+    <!-- Google Fonts: Outfit for a modern, tech feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        body {
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --bg-dark: #0f1115;
+            --primary: #6366f1;
+            --accent: #ac54f1;
+            --text-main: #ffffff;
+            --text-muted: #9ca3af;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        * {
             margin: 0;
-            height: 100vh;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* --- BACKGROUND ALIVE --- */
+        .bg-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99,102,241,0.25) 0%, rgba(15,17,21,0) 70%);
+            top: -100px;
+            left: -100px;
+            border-radius: 50%;
+            z-index: 0;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .bg-glow-2 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(172,84,241,0.2) 0%, rgba(15,17,21,0) 70%);
+            bottom: -50px;
+            right: -50px;
+            border-radius: 50%;
+            z-index: 0;
+            animation: float 12s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 50px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        /* --- MAIN CONTAINER --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            width: 100%;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* --- LEFT CONTENT --- */
+        .content-wrapper {
+            max-width: 600px;
+        }
+
+        .brand-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            color: #818cf8;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            backdrop-filter: blur(4px);
+        }
+
+        h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        p.lead {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+        }
+
+        /* --- INPUT FORM --- */
+        .notify-form {
+            display: flex;
+            gap: 10px;
+            max-width: 450px;
+            position: relative;
+        }
+
+        .input-group {
+            position: relative;
+            width: 100%;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--glass-border);
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .input-group input:focus {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+        }
+
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        button.btn-primary {
+            padding: 0 2rem;
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+        }
+
+        button.btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.5);
+        }
+
+        .form-note {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .form-note i { color: #4ade80; }
+
+        /* --- RIGHT MOCKUP (Visual) --- */
+        .visual-wrapper {
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #0f172a; /* Dark Blue Background */
-            color: #f8fafc;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            text-align: center;
         }
-        .container {
-            max-width: 600px;
-            padding: 20px;
+
+        .glass-card {
+            width: 380px;
+            height: 240px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: var(--glass-shadow);
+            position: relative;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transform: perspective(1000px) rotateY(-15deg) rotateX(10deg);
+            transition: transform 0.5s ease;
+            z-index: 2;
         }
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            background: linear-gradient(to right, #60a5fa, #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+
+        .glass-card:hover {
+            transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
         }
-        p {
+
+        .glass-card-2 {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            z-index: 1;
+            transform: translateZ(-50px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            margin-bottom: 1rem;
+        }
+
+        .card-line {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+        }
+
+        .w-75 { width: 75%; }
+        .w-50 { width: 50%; }
+
+        /* --- COUNTDOWN (Optional) --- */
+        .timer-row {
+            display: flex;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .time-box h4 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .time-box span {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            width: 100%;
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            color: var(--text-muted);
             font-size: 1.25rem;
-            color: #94a3b8;
-            margin-bottom: 30px;
+            transition: color 0.3s;
         }
-        .notify-btn {
-            padding: 12px 24px;
-            font-size: 1rem;
-            font-weight: bold;
-            color: #0f172a;
-            background-color: #38bdf8;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: opacity 0.2s;
+
+        .social-link:hover { color: white; }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.9rem;
         }
-        .notify-btn:hover { opacity: 0.9; }
+
+        /* --- MEDIA QUERIES --- */
+        @media (max-width: 968px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 4rem;
+                gap: 4rem;
+            }
+
+            .content-wrapper {
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .notify-form {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            button.btn-primary { width: 100%; padding: 1rem; }
+            
+            h1 { font-size: 3rem; }
+
+            .glass-card {
+                transform: none;
+                width: 90vw;
+                max-width: 350px;
+            }
+            .glass-card:hover { transform: none; }
+            
+            .timer-row { justify-content: center; }
+
+            footer { flex-direction: column; gap: 1rem; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Background Anim -->
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
     <div class="container">
-        <h1>Something Amazing is Coming</h1>
-        <p>We are building the future of mobile experiences. <br> Stay tuned.</p>
-        <a href="mailto:your-email@example.com" class="notify-btn">Contact Us</a>
+        <!-- Text Content -->
+        <div class="content-wrapper">
+            <div class="brand-badge">Coming Soon</div>
+            <h1>Redefining <br>The App Experience.</h1>
+            <p class="lead">
+                We are building something extraordinary. A platform designed to connect, inspire, and elevate your daily life. Join the waitlist to get early access.
+            </p>
+
+            <form class="notify-form" onsubmit="event.preventDefault(); alert('Thanks for your interest!');">
+                <div class="input-group">
+                    <input type="email" placeholder="Enter your email address" required>
+                </div>
+                <button type="submit" class="btn-primary">Notify Me</button>
+            </form>
+
+            <div class="form-note">
+                <i class="fa-solid fa-lock"></i> No spam. Unsubscribe anytime.
+            </div>
+
+            <div class="timer-row">
+                <div class="time-box">
+                    <h4 id="days">00</h4>
+                    <span>Days</span>
+                </div>
+                <div class="time-box">
+                    <h4 id="hours">00</h4>
+                    <span>Hours</span>
+                </div>
+                <div class="time-box">
+                    <h4 id="minutes">00</h4>
+                    <span>Minutes</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Visual Content -->
+        <div class="visual-wrapper">
+            <div class="glass-card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <h3 style="margin-bottom:0.5rem; font-size:1.5rem;">Lightning Fast</h3>
+                <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">Experience zero latency with our new optimized engine.</p>
+                <div class="card-line w-75"></div>
+                <div class="card-line w-50"></div>
+            </div>
+            
+            <!-- Floating Decorative Element -->
+            <div class="glass-card-2">
+                <i class="fa-solid fa-mobile-screen" style="font-size: 3rem; color: rgba(255,255,255,0.8);"></i>
+            </div>
+        </div>
     </div>
+
+    <footer>
+        <div class="copyright">
+            &copy; 2026 MyAwesomeApp. All rights reserved.
+        </div>
+        <div class="footer-links">
+            <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Countdown Logic
+        const launchDate = new Date();
+        launchDate.setDate(launchDate.getDate() + 14); // Set to 14 days from now
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
 </body>
 </html>
