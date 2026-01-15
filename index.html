@@ -16,7 +16,7 @@
     <style>
         /* --- RESET & VARIABLES --- */
         :root {
-            /* Nimbzo Brand Colors based on existing palette */
+            /* Nimbzo Brand Colors */
             --bg-dark: #0f1115;
             --primary: #CC2B52;      /* Primary Red/Pink */
             --primary-dark: #740938; /* Darker Burgundy */
@@ -118,10 +118,10 @@
         .brand-badge {
             display: inline-block;
             padding: 0.5rem 1.25rem;
-            background: rgba(204, 43, 82, 0.15); /* Primary color low opacity */
+            background: rgba(204, 43, 82, 0.15);
             border: 1px solid rgba(204, 43, 82, 0.3);
             border-radius: 50px;
-            color: #ff8fa3; /* Light pinkish text */
+            color: #ff8fa3;
             font-size: 0.875rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
@@ -136,7 +136,6 @@
             line-height: 1.1;
             font-weight: 800;
             margin-bottom: 1.5rem;
-            /* Gradient Text matching Nimbzo Colors */
             background: linear-gradient(135deg, #ffffff 30%, #DE7C7D 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -191,7 +190,6 @@
             padding: 0 2rem;
             border-radius: 12px;
             border: none;
-            /* Nimbzo Gradient Button */
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             font-weight: 600;
@@ -209,7 +207,6 @@
             box-shadow: 0 10px 25px rgba(204, 43, 82, 0.6);
         }
 
-        /* Subtle shine effect on button */
         button.btn-primary::after {
             content: '';
             position: absolute;
@@ -274,7 +271,6 @@
             border-color: rgba(255,255,255,0.2);
         }
 
-        /* Decoration Card behind */
         .glass-card-bg {
             position: absolute;
             width: 380px;
@@ -314,7 +310,6 @@
         .icon-box {
             width: 60px;
             height: 60px;
-            /* Gradient for Icon Box matching Nimbzo */
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             border-radius: 16px;
             display: flex;
@@ -335,7 +330,6 @@
             position: relative;
         }
         
-        /* Shimmer effect inside loading lines */
         .card-line::after {
             content: '';
             position: absolute;
@@ -354,7 +348,6 @@
         .w-75 { width: 75%; }
         .w-50 { width: 50%; }
 
-        /* --- KEYFRAMES FOR ENTRANCE --- */
         @keyframes fade-in-up {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -411,12 +404,18 @@
             color: var(--text-muted);
             font-size: 1.25rem;
             transition: color 0.3s, transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .social-link:hover { 
-            color: var(--primary-light); 
-            transform: translateY(-3px);
-        }
+        /* Specific Hover Colors */
+        .social-link:hover { transform: translateY(-3px); }
+        .social-link:hover .fa-x-twitter { color: #fff; }
+        .social-link:hover .fa-instagram { color: #E1306C; }
+        .social-link:hover .fa-facebook { color: #1877F2; }
+        .social-link:hover .fa-reddit { color: #FF4500; }
+        .social-link:hover .fa-tiktok { color: #00f2ea; }
 
         .copyright {
             color: rgba(255, 255, 255, 0.3);
@@ -533,10 +532,21 @@
             &copy; 2026 Nimbzo. All rights reserved.
         </div>
         <div class="footer-links">
-            <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" class="social-link"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="#" class="social-link"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://x.com/Nimbzo_" class="social-link" target="_blank" aria-label="X (Twitter)">
+                <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/nimbzo/" class="social-link" target="_blank" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/people/Nimbzo/61583201787268/" class="social-link" target="_blank" aria-label="Facebook">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="https://www.tiktok.com/@nimbzo_" class="social-link" target="_blank" aria-label="TikTok">
+                <i class="fa-brands fa-tiktok"></i>
+            </a>
+            <a href="https://www.reddit.com/user/Parking-Marsupial418/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button" class="social-link" target="_blank" aria-label="Reddit">
+                <i class="fa-brands fa-reddit"></i>
+            </a>
         </div>
     </footer>
 
