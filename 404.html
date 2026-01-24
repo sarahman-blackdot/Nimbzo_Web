@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,11 +16,13 @@
             --text-dark: #1a1a1a;
             --text-light: #ffffff;
         }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: #f8f9fa;
@@ -32,6 +35,7 @@
             overflow: hidden;
             position: relative;
         }
+
         /* Ambient Background Background */
         .ambient-bg {
             position: absolute;
@@ -46,10 +50,19 @@
             z-index: -1;
             animation: pulse 10s infinite alternate;
         }
+
         @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.15; }
-            100% { transform: scale(1.1); opacity: 0.2; }
+            0% {
+                transform: scale(1);
+                opacity: 0.15;
+            }
+
+            100% {
+                transform: scale(1.1);
+                opacity: 0.2;
+            }
         }
+
         .container {
             width: 90%;
             max-width: 480px;
@@ -65,9 +78,14 @@
             opacity: 0;
             transform: translateY(30px);
         }
+
         @keyframes slideUp {
-            to { opacity: 1; transform: translateY(0); }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         .logo {
             font-size: 42px;
             font-weight: 800;
@@ -78,20 +96,24 @@
             letter-spacing: -1px;
             display: inline-block;
         }
+
         .message-box {
             margin-bottom: 30px;
         }
+
         h2 {
             font-size: 24px;
             font-weight: 700;
             margin-bottom: 12px;
             color: #2d3436;
         }
+
         p {
             font-size: 16px;
             color: #636e72;
             line-height: 1.6;
         }
+
         /* Premium Button */
         .open-btn {
             display: inline-block;
@@ -110,10 +132,12 @@
             border: none;
             cursor: pointer;
         }
+
         .open-btn:active {
             transform: scale(0.98);
             box-shadow: 0 5px 15px rgba(116, 9, 56, 0.2);
         }
+
         .open-btn::after {
             content: '';
             position: absolute;
@@ -121,15 +145,25 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
             transform: skewX(-20deg) translateX(-150%);
             animation: shine 3s infinite;
         }
+
         @keyframes shine {
-            0% { transform: skewX(-20deg) translateX(-150%); }
-            20% { transform: skewX(-20deg) translateX(150%); }
-            100% { transform: skewX(-20deg) translateX(150%); }
+            0% {
+                transform: skewX(-20deg) translateX(-150%);
+            }
+
+            20% {
+                transform: skewX(-20deg) translateX(150%);
+            }
+
+            100% {
+                transform: skewX(-20deg) translateX(150%);
+            }
         }
+
         .sub-link {
             display: block;
             margin-top: 25px;
@@ -138,9 +172,11 @@
             text-decoration: none;
             transition: color 0.3s;
         }
+
         .sub-link:hover {
             color: var(--primary);
         }
+
         /* Spinner for auto-redirect feel */
         .spinner {
             width: 24px;
@@ -151,9 +187,15 @@
             margin: 0 auto 20px;
             animation: spin 1s linear infinite;
         }
-        @keyframes spin { to { transform: rotate(360deg); } }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
+
 <body>
     <div class="ambient-bg"></div>
     <div class="container">
@@ -164,24 +206,25 @@
             <p id="description">Redirecting you to the shared content. If nothing happens, tap the button below.</p>
         </div>
         <a id="deepLinkBtn" href="#" class="open-btn">Open in Nimbzo</a>
-        
-        <a href="https://play.google.com/store/apps/details?id=com.nimbzo.mobile" class="sub-link">Don't have the app? Get it on Google Play</a>
+
+        <a href="https://play.google.com/store/apps/details?id=com.nimbzo.mobile" class="sub-link">Don't have the app?
+            Get it on Google Play</a>
     </div>
     <script>
         // --- LOGIC ---
         // 1. Parse the incoming URL path (e.g. /share/post/123)
         const path = window.location.pathname;
-        
+
         // 2. Construct the Intent URL
         // Structure: intent://<host><path>#Intent;scheme=https;package=<package_name>;end
         // This is the most reliable way to trigger Android apps from a browser
         const package = 'com.nimbzo.mobile';
         const host = 'nimbzo.com';
         const scheme = 'https';
-        
+
         // Android Intent Scheme
         const intentUrl = `intent://${host}${path}#Intent;scheme=${scheme};package=${package};end`;
-        
+
         // Fallback or Direct Universal Link (sometimes works better depending on browser)
         const universalLink = `https://${host}${path}`;
         // 3. Set the button target
@@ -199,4 +242,5 @@
         }, 800);
     </script>
 </body>
+
 </html>
