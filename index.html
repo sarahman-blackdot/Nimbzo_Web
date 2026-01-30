@@ -6,17 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nimbzo - Your World, Re-Discovered</title>
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
+    <!-- Background Effects -->
     <div class="bg-glow"></div>
     <div class="bg-glow-2"></div>
 
@@ -29,6 +32,7 @@
                 <button class="tab-btn" data-tab="tab-business">For Business</button>
             </div>
 
+            <!-- Optional: Could be a 'Download' button or hidden on mobile -->
             <a href="#download" class="btn btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">
                 Get App
             </a>
@@ -37,8 +41,10 @@
 
     <main>
 
+        <!-- ==================== TAB 1: GENERAL USERS ==================== -->
         <div id="tab-general" class="tab-content active-content">
 
+            <!-- Hero Section -->
             <section class="hero">
                 <div class="hero-text">
                     <h1>Your World, <br><span>Re-Discovered.</span></h1>
@@ -57,8 +63,10 @@
                 </div>
 
                 <div class="hero-visual">
+                    <!-- Placeholder for App Mockup or Illustration -->
                     <div
                         style="width: 300px; height: 600px; background: rgba(255,255,255,0.05); border: 2px solid var(--glass-border); border-radius: 40px; position: relative;">
+                        <!-- Simple visual representation of app screen -->
                         <div
                             style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: rgba(255,255,255,0.1); font-size: 3rem;">
                             <i class="fa-solid fa-mobile-screen"></i>
@@ -67,27 +75,29 @@
                 </div>
             </section>
 
+            <!-- Features -->
             <section>
                 <h2 class="section-title">Why Nimbzo?</h2>
                 <div class="features-grid">
                     <div class="glass-card">
                         <i class="fa-solid fa-map-location-dot"></i>
-                        <h3>Daily Deals</h3>
-                        <p>Never miss out on exclusive offers from your favorite local businesses.</p>
-                    </div>
-                    <div class="glass-card">
-                        <i class="fa-solid fa-users"></i>
                         <h3>Plan Trips</h3>
                         <p>Create detailed itineraries and discover hidden gems in your city or abroad.</p>
                     </div>
                     <div class="glass-card">
-                        <i class="fa-solid fa-tags"></i>
+                        <i class="fa-solid fa-users"></i>
                         <h3>Travel Buddies</h3>
                         <p>Connect with like-minded travelers and locals to share experiences.</p>
+                    </div>
+                    <div class="glass-card">
+                        <i class="fa-solid fa-tags"></i>
+                        <h3>Daily Deals</h3>
+                        <p>Never miss out on exclusive offers from your favorite local businesses.</p>
                     </div>
                 </div>
             </section>
 
+            <!-- How to Use -->
             <section>
                 <h2 class="section-title">Getting Started</h2>
                 <p class="section-subtitle">It’s easier than you think.</p>
@@ -123,6 +133,7 @@
                 </div>
             </section>
 
+            <!-- About Us -->
             <section>
                 <div class="glass-card" style="padding: 3rem;">
                     <h2 class="section-title" style="margin-top: 0;">Who We Are</h2>
@@ -138,6 +149,7 @@
 
         </div>
 
+        <!-- ==================== TAB 2: BUSINESS ==================== -->
         <div id="tab-business" class="tab-content">
 
             <section class="hero">
@@ -231,7 +243,7 @@
             <div class="footer-col">
                 <h4>Nimbzo</h4>
                 <p style="color: var(--text-muted); font-size: 0.9rem;">
-                    Save • Connect • Explore
+                    Your ultimate travel and discovery companion.
                 </p>
             </div>
 
@@ -242,6 +254,7 @@
                     <li><a href="privacy.html">Privacy Policy</a></li>
                     <li><a href="cookie_policy.html">Cookie Policy</a></li>
                     <li><a href="disclaimer.html">Disclaimer</a></li>
+                    <li><a href="delete_account.html">Delete Account</a></li>
                 </ul>
             </div>
 
