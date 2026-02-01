@@ -1,11 +1,13 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "com.nimbzo.mobile",
       "sha256_cert_fingerprints": [
-        "FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C"
+        "40:04:6B:93:7C:FE:76:78:AB:6B:EA:97:E4:D8:20:6C:C9:FD:D6:F7:77:7E:CA:66:C1:6E:FF:5E:65:BF:C5:79"
       ]
     }
   }
