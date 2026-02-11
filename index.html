@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -25,7 +25,10 @@
 
     <header>
         <div class="nav-container">
-            <div class="brand-logo">Nimbzo</div>
+            <div class="brand-logo">
+                <img src="logo.png" alt="Nimbzo Logo" style="height: 40px; margin-right: 10px; vertical-align: middle;">
+                Nimbzo
+            </div>
 
             <div class="tab-switcher">
                 <button class="tab-btn active" data-tab="tab-general">For Users</button>
@@ -64,12 +67,87 @@
 
                 <div class="hero-visual">
                     <!-- Placeholder for App Mockup or Illustration -->
-                    <div
-                        style="width: 300px; height: 600px; background: rgba(255,255,255,0.05); border: 2px solid var(--glass-border); border-radius: 40px; position: relative;">
-                        <!-- Simple visual representation of app screen -->
-                        <div
-                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: rgba(255,255,255,0.1); font-size: 3rem;">
-                            <i class="fa-solid fa-mobile-screen"></i>
+                    <div class="hero-visual-frame"
+                        style="width: 300px; max-width: 100%; height: 600px; padding: 10px; background: #000; border-radius: 45px; border: 4px solid #333; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+                        <div class="playstore-screen">
+                            <!-- Status Bar Placeholder -->
+                            <div
+                                style="height: 25px; width: 100%; display: flex; justify-content: space-between; padding: 0 1rem; align-items: center; font-size: 0.7rem; color: #e8eaed;">
+                                <span>1:53</span>
+                                <div style="display: flex; gap: 5px;">
+                                    <i class="fa-solid fa-signal" style="font-size: 0.6rem;"></i>
+                                    <i class="fa-solid fa-wifi" style="font-size: 0.6rem;"></i>
+                                    <i class="fa-solid fa-battery-half" style="font-size: 0.6rem;"></i>
+                                </div>
+                            </div>
+
+                            <!-- Header -->
+                            <div class="ps-header">
+                                <i class="fa-solid fa-arrow-left"></i>
+                                <div style="display: flex; gap: 1rem;">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </div>
+                            </div>
+
+                            <!-- Content -->
+                            <div class="ps-content">
+                                <div class="ps-app-header">
+                                    <div class="ps-app-icon">
+                                        <img src="logo.png" alt="App Icon">
+                                    </div>
+                                    <div class="ps-app-info">
+                                        <h2>Nimbzo (Early Access)</h2>
+                                        <p>Nimbzo</p>
+                                        <span class="ps-badge">Contains ads</span>
+                                    </div>
+                                </div>
+
+                                <div class="ps-actions">
+                                    <button class="ps-btn ps-btn-uninstall">Uninstall</button>
+                                    <button class="ps-btn ps-btn-open">Open</button>
+                                </div>
+
+                                <div
+                                    style="margin-bottom: 1.5rem; background: #303134; padding: 1rem; border-radius: 10px; font-size: 0.85rem; color: #e8eaed;">
+                                    <i class="fa-solid fa-circle-info" style="margin-right: 0.5rem;"></i>
+                                    You've got early access to this app. Provide your feedback so the developer can
+                                    improve this app.
+                                </div>
+
+                                <div class="ps-whats-new">
+                                    <h3>What's new <i class="fa-solid fa-arrow-right" style="font-size: 0.9rem;"></i>
+                                    </h3>
+                                    <p style="margin-bottom: 0.5rem; font-size: 0.7rem; color: #9aa0a6;">Last updated 7
+                                        Feb 2026</p>
+                                    <p>- Fixed issues reported by users</p>
+                                    <p>- Minor improvements throughout the app</p>
+                                </div>
+                                <br>
+                                <div class="ps-whats-new">
+                                    <h3>Your private feedback <i class="fa-solid fa-ellipsis-vertical"
+                                            style="font-size: 0.9rem;"></i></h3>
+                                    <div class="ps-rating-row">
+                                        <div
+                                            style="width: 24px; height: 24px; background: #555; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;">
+                                            B</div>
+                                        <span style="font-size: 0.9rem;">Blackdot _</span>
+                                    </div>
+                                    <div style="color: #8ab4f8; margin-bottom: 0.5rem;">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <span
+                                            style="font-size: 0.8rem; color: #9aa0a6; margin-left: 5px;">01/02/2026</span>
+                                    </div>
+                                    <p>It's a great app for discovering the best deals and local hidden gems. Also tried
+                                        the plan a trip feature that's impressive too.</p>
+                                    <p style="color: #8ab4f8; margin-top: 0.5rem;">Edit your feedback</p>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -161,7 +239,7 @@
                 </div>
                 <div class="hero-visual">
                     <div
-                        style="width: 300px; height: 400px; background: rgba(255,255,255,0.05); border: 2px solid var(--primary); border-radius: 20px; display: flex; align-items: center; justify-content: center;">
+                        style="width: 300px; max-width: 100%; height: 400px; background: rgba(255,255,255,0.05); border: 2px solid var(--primary); border-radius: 20px; display: flex; align-items: center; justify-content: center;">
                         <span style="font-size: 5rem; color: var(--primary);"><i
                                 class="fa-solid fa-chart-line"></i></span>
                     </div>
@@ -211,24 +289,30 @@
 
                     <div id="contact-biz" class="form-container">
                         <h3 style="margin-bottom: 1.5rem;">Contact Us</h3>
-                        <form onsubmit="handleContact(event)">
+                        <form id="contact-form" action="https://api.staticforms.xyz/submit" method="POST">
+                            <!-- Replace with your Access Key from https://www.staticforms.xyz/ -->
+                            <input type="hidden" name="accessKey" value="sf_4mgd7dl26985hbbnbb44475n">
+                            <input type="hidden" name="subject" value="New Inquiry from Nimbzo Website">
+                            <input type="hidden" name="replyTo" value="@">
+
                             <div class="input-group">
                                 <label>Business Name</label>
-                                <input type="text" required>
+                                <input type="text" name="name" required placeholder="Your Business">
                             </div>
                             <div class="input-group">
                                 <label>Email Address</label>
-                                <input type="email" required>
+                                <input type="email" name="email" required placeholder="you@example.com">
                             </div>
                             <div class="input-group">
                                 <label>Message / Inquiry</label>
-                                <textarea rows="3"></textarea>
+                                <textarea name="message" rows="3" required placeholder="How can we help?"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary" style="width: 100%;">Send Inquiry</button>
                             <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-dim);">
                                 Or email us directly: <a href="mailto:nimbzohelp@gmail.com"
                                     style="color: var(--primary-light);">nimbzohelp@gmail.com</a>
                             </p>
+                            <p id="form-status" style="margin-top: 0.5rem; font-size: 0.9rem;"></p>
                         </form>
                     </div>
                 </div>
@@ -237,6 +321,15 @@
         </div>
 
     </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast-notification">
+        <div class="toast-icon"><i class="fa-solid fa-clock"></i></div>
+        <div>
+            <h4 style="margin: 0; font-size: 1rem;">Coming Soon</h4>
+            <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">The iOS version is on its way!</p>
+        </div>
+    </div>
 
     <footer>
         <div class="footer-content">
