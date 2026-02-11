@@ -25,7 +25,31 @@ document.addEventListener('DOMContentLoaded', () => {
     if (yearSpan) {
         yearSpan.innerText = new Date().getFullYear();
     }
+    // --- 4. APP STORE COMING SOON ---
+    const appStoreBtns = document.querySelectorAll('a[href="#"], a[href=""]'); // Targeting generic # links for now, or specific class
+
+    // Specifically target the App Store button if it has a unique class or ID. 
+    // Since it currently has class "btn-secondary" and href="#", I'll be more specific if possible or add an ID in HTML step.
+    // For now, let's find the one with fa-apple
+
+    const appleBtn = Array.from(document.querySelectorAll('.btn-secondary')).find(btn => btn.innerHTML.includes('fa-apple'));
+
+    if (appleBtn) {
+        appleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showToast();
+        });
+    }
 });
+
+function showToast() {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000); // Hide after 3 seconds
+}
 
 function createParticles() {
     const particleCount = 20;
@@ -54,13 +78,48 @@ function createParticles() {
     }
 }
 
-// Simple Form Alert (for demo purposes)
-function handleNotify(e) {
-    e.preventDefault();
-    alert("Thanks! You'll be notified when Nimbzo launches.");
-}
+// --- 5. CONTACT FORM HANDLING (StaticForms) ---
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-function handleContact(e) {
-    e.preventDefault();
-    alert("Message sent! Our team will reach out shortly.");
+        const status = document.getElementById("form-status");
+        const data = new FormData(event.target);
+
+        // Convert FormData to JSON for StaticForms
+        const jsonObject = Object.fromEntries(data.entries());
+
+        // Check if params are correct (Access Key is handled in HTML)
+        if (!jsonObject.accessKey || jsonObject.accessKey === "YOUR_ACCESS_KEY_HERE") {
+            // Just a fallback check, though user already updated HTML
+            console.warn("Access Key might be missing or default.");
+        }
+
+        status.innerHTML = "Sending...";
+        status.style.color = "#9ca3af";
+
+        fetch("https://api.staticforms.xyz/submit", {
+            method: "POST",
+            body: JSON.stringify(jsonObject),
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }).then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    status.innerHTML = "Thanks for your inquiry! We'll stay in touch.";
+                    status.style.color = "#4ade80"; // Green
+                    contactForm.reset();
+                } else {
+                    status.innerHTML = result.message || "Oops! There was a problem submitting your form";
+                    status.style.color = "#f87171"; // Red
+                }
+            }).catch(error => {
+                console.error(error);
+                status.innerHTML = "Oops! There was a problem submitting your form";
+                status.style.color = "#f87171"; // Red
+            });
+    });
 }
