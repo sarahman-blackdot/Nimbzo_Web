@@ -481,6 +481,9 @@ footer {
 
     header {
         height: auto;
+        position: relative;
+        /* Overrides sticky */
+        top: auto;
     }
 
     main {
