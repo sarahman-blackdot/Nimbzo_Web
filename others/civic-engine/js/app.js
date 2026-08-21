@@ -316,17 +316,21 @@ if (typeof document !== 'undefined') {
     }
 
 
-    // Scroll listener for floating advance buttons
+    // IntersectionObserver for bottom-of-page advance button
+    const chartSection = document.querySelector('.chart-section');
     const floatAdvanceDiv = document.getElementById('floating-advance');
-    if (floatAdvanceDiv) {
-        window.addEventListener('scroll', () => {
-            // Show past the middle of the page
-            if (window.scrollY > document.documentElement.scrollHeight / 3) {
-                floatAdvanceDiv.classList.remove('hidden');
-            } else {
-                floatAdvanceDiv.classList.add('hidden');
-            }
-        });
+
+    if (chartSection && floatAdvanceDiv && typeof IntersectionObserver !== 'undefined') {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    floatAdvanceDiv.classList.remove('hidden');
+                } else {
+                    floatAdvanceDiv.classList.add('hidden');
+                }
+            });
+        }, { threshold: 0.1 });
+        observer.observe(chartSection);
     }
 
     // Initial setup
