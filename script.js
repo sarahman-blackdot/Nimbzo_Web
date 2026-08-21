@@ -14,6 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add active class to clicked button and target content
             btn.classList.add('active');
             document.getElementById(targetTab).classList.add('active-content');
+            
+            // If Others tab, let iframe handle scrolling to preserve position: fixed
+            if (targetTab === 'tab-others') {
+                window.scrollTo(0, 0);
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
         });
     });
 
