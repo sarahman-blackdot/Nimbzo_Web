@@ -266,8 +266,8 @@ if (typeof document !== 'undefined') {
         historyChart.update();
     }
 
-    const advanceHandler = () => {
-        const result = runSimulation(simState, policyState, defaultConfig, 120, 'timestepped');
+    const advanceHandler = (months) => {
+        const result = runSimulation(simState, policyState, defaultConfig, months, 'timestepped');
         simState = result.finalState;
         render();
         renderFlows();
@@ -275,25 +275,26 @@ if (typeof document !== 'undefined') {
     };
 
     const btn = document.getElementById('advance-btn');
-    if (btn) btn.addEventListener('click', advanceHandler);
+    if (btn) btn.addEventListener('click', () => advanceHandler(120));
+
+    const btn5 = document.getElementById('advance-5-btn');
+    if (btn5) btn5.addEventListener('click', () => advanceHandler(60));
 
     const floatBtn = document.getElementById('floating-advance-btn');
-    if (floatBtn) floatBtn.addEventListener('click', advanceHandler);
+    if (floatBtn) floatBtn.addEventListener('click', () => advanceHandler(120));
+
+    const floatBtn5 = document.getElementById('floating-advance-5-btn');
+    if (floatBtn5) floatBtn5.addEventListener('click', () => advanceHandler(60));
 
     // IntersectionObserver for bottom-of-page advance button
     const chartSection = document.querySelector('.chart-section');
     const floatAdvanceDiv = document.getElementById('floating-advance');
-    let floatAdvanceTimeout = null;
 
     if (chartSection && floatAdvanceDiv && typeof IntersectionObserver !== 'undefined') {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     floatAdvanceDiv.classList.remove('hidden');
-                    if (floatAdvanceTimeout) clearTimeout(floatAdvanceTimeout);
-                    floatAdvanceTimeout = setTimeout(() => {
-                        floatAdvanceDiv.classList.add('hidden');
-                    }, 4000); // dissolve after 4 seconds
                 }
             });
         }, { threshold: 0.1 });
