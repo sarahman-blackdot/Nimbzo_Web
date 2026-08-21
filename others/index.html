@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nimbzo - Others</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+
+    <header>
+        <div class="nav-container">
+            <div class="brand-logo" style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 40px; height: 40px; border-radius: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                    <img src="../logo.png" alt="Nimbzo Logo" style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.5);">
+                </div>
+                Nimbzo
+            </div>
+
+            <div class="tab-switcher">
+                <button class="tab-btn" onclick="window.location.href='../'">For Users</button>
+                <button class="tab-btn" onclick="window.location.href='../?tab=business'">For Business</button>
+                <button class="tab-btn active">Others</button>
+            </div>
+
+            <a href="https://play.google.com/store/apps/details?id=com.nimbzo.mobile" class="btn btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">
+                Get App
+            </a>
+        </div>
+    </header>
+
+    <main style="margin-top: 120px;">
+        <div class="container" style="margin: 0 auto;">
+            <div class="header-area">
+                <h1>Experiments <span>& Others</span></h1>
+                <p class="subtitle">A collection of experimental projects, sandbox tools, and side concepts.</p>
+            </div>
+            <div class="card-grid">
+                <a href="civic-engine/" class="glass-card">
+                    <h2>The Civic Engine</h2>
+                    <p>An experimental nation simulation sandbox powered by real-world policy dynamics.</p>
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

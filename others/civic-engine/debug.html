@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nation Sim Debug Console</title>
+</head>
+<body style="background-color: #121212; color: #fff; font-family: sans-serif; padding: 2rem;">
+    <h1>Nation Sim Debug Console</h1>
+    <p>Check the browser console (F12) to see the test harness outputs.</p>
+    <div style="margin-top: 1rem;">
+        <button id="btn-instant" style="padding: 0.5rem 1rem; margin-right: 1rem; cursor: pointer;">Run Instant (10yr)</button>
+        <button id="btn-timestepped" style="padding: 0.5rem 1rem; cursor: pointer;">Run Time-Stepped (10yr)</button>
+    </div>
+
+    <!-- Keep existing test harness for baseline logs -->
+    <script type="module" src="js/engine/test-harness.js"></script>
+
+    <script type="module">
+        import { createInitialPolicyState, createInitialSimState } from './js/engine/state.js';
+        import { defaultConfig } from './js/engine/config.js';
+        import { runSimulation } from './js/engine/simulate.js';
+
+        document.getElementById('btn-instant').addEventListener('click', () => {
+            console.log('--- RUN INSTANT (10yr) ---');
+            const initialSimState = createInitialSimState();
+            const policyState = createInitialPolicyState();
+            const result = runSimulation(initialSimState, policyState, defaultConfig, 120, "instant");
+            console.log("Final State:", result.finalState);
+        });
+
+        document.getElementById('btn-timestepped').addEventListener('click', () => {
+            console.log('--- RUN TIME-STEPPED (10yr) ---');
+            const initialSimState = createInitialSimState();
+            const policyState = createInitialPolicyState();
+            const result = runSimulation(initialSimState, policyState, defaultConfig, 120, "timestepped");
+            console.log("Final State:", result.finalState);
+            console.log("History Length:", result.history.length);
+            
+            // Note: history is 0-indexed where index 0 is Month 1, so Month 12 is index 11.
+            const m12 = result.history[11];
+            const m24 = result.history[23];
+            const m60 = result.history[59];
+            const m120 = result.history[119];
+            
+            console.log("Healthcare Capacity Trajectory:");
+            console.log("  Month 12: ", m12 ? m12.stocks.healthcareCapacity.toFixed(2) : "N/A");
+            console.log("  Month 24: ", m24 ? m24.stocks.healthcareCapacity.toFixed(2) : "N/A");
+            console.log("  Month 60: ", m60 ? m60.stocks.healthcareCapacity.toFixed(2) : "N/A");
+            console.log("  Month 120: ", m120 ? m120.stocks.healthcareCapacity.toFixed(2) : "N/A");
+        });
+    </script>
+</body>
+</html>
