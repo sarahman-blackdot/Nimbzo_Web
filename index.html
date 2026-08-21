@@ -249,7 +249,7 @@
 
         <!-- ==================== TAB 3: OTHERS ==================== -->
         <div id="tab-others" class="tab-content" style="padding: 0;">
-            <iframe src="others/" style="width: 100%; min-height: 100vh; border: none; display: block;"></iframe>
+            <iframe src="others/" id="others-iframe" scrolling="no" style="width: 100%; min-height: 100vh; border: none; display: block; overflow: hidden;" onload="this.style.height = this.contentWindow.document.documentElement.scrollHeight + 'px'; new ResizeObserver(() => { this.style.height = this.contentWindow.document.documentElement.scrollHeight + 'px'; }).observe(this.contentWindow.document.body);"></iframe>
         </div>
 
     </main>
