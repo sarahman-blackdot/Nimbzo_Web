@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nation Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <a href="../" target="_parent" class="back-link">&larr; Back to Others Hub</a>
+        <h1>Nation Simulator</h1>
+        <div class="scoreboard">
+            <h2>Year <span id="year-display">0</span></h2>
+            <h3>Human Output Score: <span id="human-output-score">0.00</span></h3>
+            <p style="font-size: 0.85rem; color: var(--text-dim); margin: 0.5rem 0 0 0; font-style: italic;">The ultimate metric of national success: a composite of economic vitality, governance, and human services.</p>
+        </div>
+        <div style="text-align: right; margin-top: 0.5rem;">
+        <p style="font-size: 0.9rem; color: var(--text-dim); margin-bottom: 0.5rem; font-style: italic;">Policy changes take years to show results &mdash; advance time to see their impact.</p>
+        <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+            <button id="advance-5-btn">Advance 5 Years</button>
+            <button id="advance-btn">Advance 10 Years</button>
+        </div>
+    </div>
+</header>
+
+    <section class="controls-section">
+        <h2>Policy Controls</h2>
+        
+        <details class="policy-category" open>
+            <summary>Economic</summary>
+            <div class="controls-grid">
+                <div class="control-group">
+                    <h3>Tax & Treasury</h3>
+                    <label>
+                        Tax Rate: <span id="val-taxRateTarget">16.0</span>% <span class="tag tag-policy">Policy</span>
+                        <div class="helper-text">The baseline percentage of economic output collected as revenue.</div>
+                        <input type="range" id="in-taxRateTarget" min="0" max="100" step="0.5" value="16.0">
+                    </label>
+                    <label>
+                        Tax Integrity: <span id="val-taxCollectionIntegrityTarget">35.0</span> <span class="tag tag-integrity">Integrity</span>
+                        <div class="helper-text">Resistance to tax evasion and internal corruption within the revenue service.</div>
+                        <input type="range" id="in-taxCollectionIntegrityTarget" min="0" max="100" step="1" value="35.0">
+                    </label>
+                    <label>
+                        Customs Integrity: <span id="val-customsIntegrityTarget">35.0</span> <span class="tag tag-integrity">Integrity</span>
+                        <div class="helper-text">Effectiveness of border tariffs and trade revenue collection without bribery.</div>
+                        <input type="range" id="in-customsIntegrityTarget" min="0" max="100" step="1" value="35.0">
+                    </label>
+                </div>
+            </div>
+        </details>
+
+        <details class="policy-category" open>
+            <summary>Services</summary>
+            <div class="controls-grid">
+                <div class="control-group">
+                    <h3>Healthcare</h3>
+                    <label>
+                        Funding: <span id="val-healthcareFundingPctTarget">4.0</span>% <span class="tag tag-funding">Funding</span>
+                        <div class="helper-text">Percentage of budget allocated to national health services.</div>
+                        <input type="range" id="in-healthcareFundingPctTarget" min="0" max="20" step="0.5" value="4.0">
+                    </label>
+                    <label>
+                        Procurement Fairness: <span id="val-procurementFairnessTarget">30.0</span> <span class="tag tag-integrity">Integrity</span>
+                        <div class="helper-text">Prevention of medical supply overpricing and kickbacks.</div>
+                        <input type="range" id="in-procurementFairnessTarget" min="0" max="100" step="1" value="30.0">
+                    </label>
+                </div>
+                <div class="control-group">
+                    <h3>Education</h3>
+                    <label>
+                        Funding: <span id="val-educationFundingPctTarget">4.0</span>% <span class="tag tag-funding">Funding</span>
+                        <div class="helper-text">Percentage of budget allocated to schools and universities.</div>
+                        <input type="range" id="in-educationFundingPctTarget" min="0" max="20" step="0.5" value="4.0">
+                    </label>
+                    <label>
+                        Integrity: <span id="val-educationIntegrityTarget">30.0</span> <span class="tag tag-integrity">Integrity</span>
+                        <div class="helper-text">Fairness of exams, credentials, and actual teacher attendance.</div>
+                        <input type="range" id="in-educationIntegrityTarget" min="0" max="100" step="1" value="30.0">
+                    </label>
+                </div>
+                <div class="control-group">
+                    <h3>Infrastructure</h3>
+                    <label>
+                        Funding: <span id="val-infrastructureFundingPctTarget">4.0</span>% <span class="tag tag-funding">Funding</span>
+                        <div class="helper-text">Percentage of budget allocated to roads, grids, and public works.</div>
+                        <input type="range" id="in-infrastructureFundingPctTarget" min="0" max="20" step="0.5" value="4.0">
+                    </label>
+                    <label>
+                        Maint. Integrity: <span id="val-infrastructureMaintenanceIntegrityTarget">30.0</span> <span class="tag tag-integrity">Integrity</span>
+                        <div class="helper-text">Prevention of substandard materials and phantom public contracts.</div>
+                        <input type="range" id="in-infrastructureMaintenanceIntegrityTarget" min="0" max="100" step="1" value="30.0">
+                    </label>
+                </div>
+            </div>
+        </details>
+
+        <details class="policy-category">
+            <summary>Governance</summary>
+            <div class="controls-grid">
+                <div class="control-group">
+                    <h3>Judicial</h3>
+                    <label>
+                        Funding: <span id="val-judicialFundingPctTarget">3.0</span>% <span class="tag tag-funding">Funding</span>
+                        <div class="helper-text">Budget for courts, legal aid, and justice system administration.</div>
+                        <input type="range" id="in-judicialFundingPctTarget" min="0" max="20" step="0.5" value="3.0">
+                    </label>
+                    <label>
+                        Indep. Integrity: <span id="val-judicialIndependenceIntegrityTarget">30.0</span> <span class="tag tag-integrity">Integrity</span>
+                        <div class="helper-text">Protection of judges from political pressure and bribery. Sets the Rule of Law.</div>
+                        <input type="range" id="in-judicialIndependenceIntegrityTarget" min="0" max="100" step="1" value="30.0">
+                    </label>
+                </div>
+                <div class="control-group">
+                    <h3>Oversight</h3>
+                    <label>
+                        Funding: <span id="val-oversightFundingPctTarget">3.0</span>% <span class="tag tag-funding">Funding</span>
+                        <div class="helper-text">Budget for anti-corruption bureaus, auditors, and watchdogs.</div>
+                        <input type="range" id="in-oversightFundingPctTarget" min="0" max="20" step="0.5" value="3.0">
+                    </label>
+                    <label>
+                        Indep. Integrity: <span id="val-oversightIndependenceIntegrityTarget">30.0</span> <span class="tag tag-integrity">Integrity</span>
+                        <div class="helper-text">Ability of watchdogs to investigate freely without political retaliation.</div>
+                        <input type="range" id="in-oversightIndependenceIntegrityTarget" min="0" max="100" step="1" value="30.0">
+                    </label>
+                </div>
+            </div>
+        </details>
+
+        <details class="policy-category">
+            <summary>Human-Adjacent</summary>
+            <div class="controls-grid">
+                <div class="control-group">
+                    <h3>Elections</h3>
+                    <label>
+                        Election Integrity: <span id="val-electionIntegrityTarget">30.0</span> <span class="tag tag-integrity">Integrity</span>
+                        <div class="helper-text">Fairness of the vote. Acts as a multiplier on Oversight effectiveness.</div>
+                        <input type="range" id="in-electionIntegrityTarget" min="0" max="100" step="1" value="30.0">
+                    </label>
+                </div>
+            </div>
+        </details>
+    </section>
+
+    <section class="flow-section">
+        <h2>Sector Flows (Projected)</h2>
+        <div class="flow-grid" id="flow-visualizer">
+            <!-- Will be populated by JS -->
+        </div>
+    </section>
+
+    <main class="grid-container">
+        <section class="module-group">
+            <h3>Economic</h3>
+            <div class="card">Treasury: <span id="val-treasury">0.00</span></div>
+            <div class="card">Tax Collection Rate: <span id="val-tax-rate">0.00</span></div>
+        </section>
+
+        <section class="module-group">
+            <h3>Services</h3>
+            <div class="card">Healthcare Capacity: <span id="val-hc-cap">0.00</span></div>
+            <div class="card">Education Capacity: <span id="val-edu-cap">0.00</span></div>
+            <div class="card">Infrastructure Quality: <span id="val-infra-qual">0.00</span></div>
+            <div class="card">Healthcare Effective Output: <span id="val-hc-out">0.00</span></div>
+        </section>
+
+        <section class="module-group">
+            <h3>Governance</h3>
+            <div class="card">Rule of Law: <span id="val-rule-of-law">0.00</span></div>
+            <div class="card">Oversight Effective Indep.: <span id="val-oversight-indep">0.00</span></div>
+            <div class="card">Election Integrity: <span id="val-election-int">0.00</span></div>
+        </section>
+
+        <section class="module-group">
+            <h3>Human</h3>
+            <div class="card">Economic Vitality: <span id="val-econ-vitality">0.00</span></div>
+            <div class="card">Infra & Services Index: <span id="val-infra-serv">0.00</span></div>
+            <div class="card">Stress Index: <span id="val-stress-index">0.00</span></div>
+            <div class="card">Brain Drain Accumulated: <span id="val-brain-drain">0.00</span></div>
+        </section>
+    </main>
+
+    <section class="chart-section">
+        <h2>Historical Trends</h2>
+        <div class="chart-container">
+            <canvas id="history-chart"></canvas>
+        </div>
+    </section>
+
+    <div id="welcome-toast" class="welcome-toast hidden">
+        <button id="welcome-close" class="welcome-close" aria-label="Close Welcome">&times;</button>
+        <div class="welcome-content">
+            <h3>Welcome to The Civic Engine</h3>
+            <p>This is a living simulation of how policies build&mdash;or break&mdash;a nation. Tweak funding and integrity targets, fast-forward time, and watch your decisions ripple through the economy, public services, and the people.</p>
+        </div>
+    </div>
+
+    <div id="floating-flow" class="floating-flow hidden">
+        <h4 style="margin: 0 0 0.5rem 0; font-size: 0.9rem; color: var(--accent-primary-hover);">Sector Flows (Projected)</h4>
+        <div class="flow-grid" id="floating-flow-visualizer">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+    
+    <div id="floating-advance" class="floating-advance hidden">
+        <button id="floating-advance-5-btn">Advance 5 Years</button>
+        <button id="floating-advance-btn">Advance 10 Years</button>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
