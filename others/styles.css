@@ -1,0 +1,80 @@
+:root {
+    /* Nimbzo Brand Tokens */
+    --bg-main: #0f1115;
+    --bg-card: rgba(255, 255, 255, 0.05);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --text-main: #ffffff;
+    --text-muted: #d1d5db;
+    --text-dim: #9ca3af;
+    --accent-primary: #CC2B52;
+    --accent-primary-hover: #DE7C7D;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    margin: 0;
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: center;
+    line-height: 1.6;
+}
+.container {
+    max-width: 900px;
+    width: 100%;
+}
+h1 {
+    color: var(--text-main);
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+}
+p {
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+.card {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+.card h2 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    color: var(--accent-primary-hover);
+    margin-bottom: 1rem;
+}
+.card p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+.back-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 1rem;
+    display: inline-block;
+    margin-bottom: 2rem;
+    transition: color 0.3s ease;
+}
+.back-link:hover {
+    color: var(--accent-primary-hover);
+}
